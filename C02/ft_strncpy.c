@@ -9,7 +9,6 @@ char *ft_strncpy(char *dest, char *src, unsigned int n)
 	while(i < n)
 	{
 		dest[i] = src[i];
-		n--;
 		i++;
 	}
 	while(dest[i++])
