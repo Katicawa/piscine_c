@@ -40,4 +40,8 @@ char    *ft_strcapitalize(char *str)
         i++;
     }
     return (str);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 222f0b24afa0d5ceb6a7003346fdece0a70e8671
