@@ -46,7 +46,8 @@ void	ft_putnbr(int nb)
 	while (nb != 0)
 	{
 		tab[offset] = (nb % 10) + '0';
-		nb = nb / 10;offset++;
+		nb = nb / 10;
+		offset++;
 	}
 	ft_rev_int_tab(tab, offset);
 	print_in_tab = 0;
