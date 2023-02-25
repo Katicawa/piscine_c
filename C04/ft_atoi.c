@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include <string.h>
 
 int ft_atoi(char *str)
 {
@@ -12,8 +11,12 @@ int ft_atoi(char *str)
 	result = 0;
 	while(str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
-	while(str[i] < '0')
+	while(str[i] == '+' || str[i] == '_')
+	{
+		if(str[i] == '-')
 			sign = -1;
+		i++;
+	}
 	while(str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + str[i] - '0';
