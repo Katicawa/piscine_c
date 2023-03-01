@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include <string.h>
 
 char *ft_strcpy(char *dest, char *src)
 {

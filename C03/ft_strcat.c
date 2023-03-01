@@ -1,6 +1,4 @@
 #include <unistd.h>
-#include <string.h>
-#include <stdio.h>
 
 int	ft_strlen(char *dest)
 {
