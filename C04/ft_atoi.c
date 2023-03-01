@@ -11,7 +11,11 @@ int ft_atoi(char *str)
 	result = 0;
 	while(str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
+<<<<<<< HEAD
 	while(str[i] == '+' || str[i] == '-')
+=======
+	while(str[i] == '+' || str[i] == '_')
+>>>>>>> d14594e295e8536d790bda2bd93acff7f998c6ee
 	{
 		if(str[i] == '-')
 			sign = -1;
