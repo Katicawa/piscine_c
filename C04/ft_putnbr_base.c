@@ -1,82 +1,77 @@
 #include <unistd.h>
 
-void	ft_rev_int_tab(char *tab, int size)
+void    ft_putchar(char c)
 {
-	int	swap;
-	int	i;
-
-	i = 0;
-	while(i < size)
-	{
-		swap = tab[i];
-		tab[i] = tab[size - 1];
-		tab[size - 1] = swap;
-		i++;
-		size--;
-	}
+    write(1, &c, 1);
 }
 
-void	ft_putnbr(int nb)
+int    ft_base_len(char *base)
 {
-	int		offset;
-	int		print_in_tab;
-	char	tab[13];
+    int i;
 
-	offset = 0;
-	if(nb == - 2147483648)
-	{
-		write(1, "- 2147483648", 12);
-		return;
-	}
-	if(nb < 0)
-	{
-		write(1, "-", 1);
-		nb = - nb;
-	}
-    if(nb == 0)
-	{
-		write(1, "0", 1);
-		return;
-	}
-	while (nb != 0)
-	{
-		tab[offset] = (nb % 10) + '0';
-		nb = nb / 10;
-		offset++;
-	}
-	ft_rev_int_tab(tab, offset);
-	print_in_tab = 0;
-	while(print_in_tab < offset)
-	{
-		write(1, &tab[print_in_tab],1);
-		print_in_tab++;
-	}
+    i = 0;
+    while (base[i])
+        i++;
+    return (i);
 }
 
-int	ft_baselen(char *base)
+int ft_check_base(char *base)
 {
-	int i;
+    int	i;
+    int	j;
 
-	i = 0;
-	while(base[i])
-		i++;
-	return(i);
-}
-
-void ft_putnbr_base(int nbr, char *base)
-{
-	int	baselen;
-	int denominator;
-	int result;
-
-	baselen = ft_baselen(base);
-	denominator = 1;
-	while ((nbr / denominator) >= baselen)
-		denominator = denominator * baselen;
-	while (denominator > 0)
+    i = 0;
+    j = 0;
+//check les char en double
+    while (base[i])
     {
-      result = (nbr / denominator) % baselen;
-      write(1, &base[result], 1);
-      denominator = denominator / baselen;
+        while (base[j])
+        {
+            if (base[i] == base[j])
+            	j++;
+			else
+				return (1);
+        }
+        i++;
+    }
+    i = 0;
+//check les char '+' & '-'
+    while (base[i])
+    {
+    	if (base[i] == '-' || base[i] == '+')
+      		return (1);
+    	i++;
+	}
+	return (0);
+}
+
+void    ft_putnbr_base(int nbr, char *base)
+{
+    int  base_len;
+	int  denominator;
+    int  result;
+
+    base_len = ft_base_len(base);
+    denominator = 1;
+	if (ft_check_base(base) == 1)
+		return;
+	if (ft_base_len(base) < 2)
+		return;
+//gére les négatifs
+    if (nbr < 0)
+    {
+        ft_putchar('-');
+        nbr = -nbr;
+    }
+//recherche la plus grande puissance
+    while ((nbr / denominator) >= base_len)
+        denominator = denominator * base_len;
+//conversion
+    while (denominator > 0)
+    {
+        result = (nbr / denominator) % base_len;
+        ft_putchar(base[result]);
+//car while(denominator > 0)
+        denominator = denominator/ base_len;
     }
 }
