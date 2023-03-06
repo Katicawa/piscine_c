@@ -6,7 +6,7 @@ void	ft_rev_int_tab(char *tab, int size)
 	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		swap = tab[i];
 		tab[i] = tab[size - 1];

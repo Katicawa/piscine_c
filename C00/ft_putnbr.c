@@ -11,7 +11,7 @@ void	ft_rev_int_tab(char *tab, int size)
 	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		swap = tab[i];
 		tab[i] = tab[size - 1];
@@ -28,17 +28,17 @@ void	ft_putnbr(int nb)
 	char	tab[13];
 
 	offset = 0;
-	if(nb == - 2147483648)
+	if (nb == - 2147483648)
 	{
-		write(1, "- 2147483648", 12);
+		write(1, "-2147483648", 11);
 		return;
 	}
-	if(nb < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-');
 		nb = - nb;
 	}
-    	if(nb == 0)
+    	if (nb == 0)
 	{
 		ft_putchar('0');
 		return;
@@ -51,7 +51,7 @@ void	ft_putnbr(int nb)
 	}
 	ft_rev_int_tab(tab, offset);
 	print_in_tab = 0;
-	while(print_in_tab < offset)
+	while (print_in_tab < offset)
 	{
 		ft_putchar(tab[print_in_tab]);
 		print_in_tab++;

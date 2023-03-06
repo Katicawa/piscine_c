@@ -5,9 +5,9 @@ int	ft_strlen(char *dest)
 	int i;
 
 	i = 0;
-	while(dest[i])
+	while (dest[i])
 		i++;
-	return(i);
+	return (i);
 }
 
 char	*ft_strcat(char *dest, char *src)
@@ -17,12 +17,12 @@ char	*ft_strcat(char *dest, char *src)
 
 	destlen = ft_strlen(dest);
 	i = 0;
-	while(src[i])
+	while (src[i])
 	{
 		dest[destlen] = src[i];
 		destlen++;
 		i++;
 	}
 	dest[destlen + i] = '\0';
-	return(dest);
+	return (dest);
 }
