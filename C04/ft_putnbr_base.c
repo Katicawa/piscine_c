@@ -17,31 +17,22 @@ int    ft_base_len(char *base)
 
 int ft_check_base(char *base)
 {
-    int	i;
-    int	j;
+	int				i;
+	unsigned char	check[256]; //taille de la table ascii
 
     i = 0;
-    j = 0;
-//check les char en double
+    while (i < 256)
+        check[i++] = 0;
+    i = 0;
     while (base[i])
     {
-        while (base[j])
-        {
-            if (base[i] == base[j])
-            	j++;
-			else
-				return (1);
-        }
+        check[(unsigned char)base[i]]++; //check le nb de fois qu'on tombe sur un char
+        if (check[(unsigned char)base[i]] > 1)
+            return (1);
         i++;
     }
-    i = 0;
-//check les char '+' & '-'
-    while (base[i])
-    {
-    	if (base[i] == '-' || base[i] == '+')
-      		return (1);
-    	i++;
-	}
+    if (check['+'] || check['-'])
+        return (1);
 	return (0);
 }
 
