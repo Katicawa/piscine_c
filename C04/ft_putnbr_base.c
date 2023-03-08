@@ -5,21 +5,11 @@ void    ft_putchar(char c)
     write(1, &c, 1);
 }
 
-int    ft_base_len(char *base)
-{
-    int i;
-
-    i = 0;
-    while (base[i])
-        i++;
-    return (i);
-}
-
 int ft_check_base(char *base)
 {
-    int            i;
+    int				i;
 //taille de la table ascii
-    unsigned char  check[256];
+    unsigned char 	check[256];
 
     i = 0;
     while (i < 256)
@@ -37,7 +27,7 @@ int ft_check_base(char *base)
 //vérifie si la chaine contient des "+" ou des "-"
     if (check['+'] || check['-'])
         return (1);
-     return (0);
+     return (i);
 }
 
 void    ft_putnbr_base(int nbr, char *base)
@@ -46,7 +36,7 @@ void    ft_putnbr_base(int nbr, char *base)
     int  denominator;
     int  result;
 
-    base_len = ft_base_len(base);
+    base_len = ft_check_base(base);
     denominator = 1;
     if (ft_check_base(base) == 1)
         return;
